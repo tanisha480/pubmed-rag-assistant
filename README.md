@@ -31,28 +31,34 @@ This app does **not** run fully locally and does **not** use Ollama. Only the em
 
 ## Setup
 
-\`\`\`bash
+bash
 git clone https://github.com/tanisha480/pubmed-rag-assistant.git
 cd pubmed-rag-assistant
 python -m venv venv
 venv\Scripts\activate   # Mac/Linux: source venv/bin/activate
 pip install -r requirements.txt
-\`\`\`
+
 
 Set your Groq API key as an environment variable (or via Streamlit secrets when deploying):
 
-\`\`\`bash
+bash
 export GROQ_API_KEY=your_key_here   # Mac/Linux
 set GROQ_API_KEY=your_key_here      # Windows
-\`\`\`
 
-## Usage
 
-\`\`\`bash
+## 🔗 Live Demo
+
+Try it here: https://pubmed-rag-assistant-jjuqbaasjlfdarhesapprxq.streamlit.app/
+
+## Usage (running locally)
+
+If you'd rather run it on your own machine instead of using the live demo above:
+
+bash
 streamlit run main.py
-\`\`\`
 
-Open http://localhost:8501, paste a PubMed URL in **Update Database**, click **Ingest**, then ask questions in **Ask a Question**.
+
+This opens the app at http://localhost:8501 (only accessible on your computer). Paste a PubMed URL in **Update Database**, click **Ingest**, then ask questions in **Ask a Question**.
 
 ## License
 
