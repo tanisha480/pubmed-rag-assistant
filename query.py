@@ -1,9 +1,12 @@
-import ollama
+import os
+from groq import Groq
 import chromadb
 from utils.embedder import embed
 
 client = chromadb.PersistentClient(path="./chroma_db")
 collection = client.get_or_create_collection("pubmed_articles")
+
+groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 
 def answer_question(question: str):
@@ -24,8 +27,11 @@ def answer_question(question: str):
         "Question: " + question
     )
 
-    response = ollama.chat(model="llama3.2:1b", messages=[{"role": "user", "content": prompt}])
-    answer = response["message"]["content"]
+    response = groq_client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": prompt}],
+    )
+    answer = response.choices[0].message.content
 
     return answer, [c["context"] for c in chunks]
 
