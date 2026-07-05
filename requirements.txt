@@ -1,6 +1,6 @@
 streamlit
-requests
-beautifulsoup4
-sentence-transformers
-chromadb
-ollama
+   requests
+   beautifulsoup4
+   sentence-transformers
+   chromadb
+   groq
